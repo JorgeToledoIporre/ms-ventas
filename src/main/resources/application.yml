@@ -7,9 +7,9 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${DB_HOST:localhost}:3306/${DB_NAME:ventasdb}?allowPublicKeyRetrieval=true&useSSL=false
-    username: ${DB_USER:root}  
-    password: ${DB_PASSWORD:}  
+    url: jdbc:mysql://52.45.19.226:3306/bdclientes
+    username: admin
+    password: adminpass
 
   jpa:
     hibernate:
