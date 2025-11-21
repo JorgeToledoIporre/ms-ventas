@@ -66,9 +66,9 @@ public class CarritoMapper {
      */
     public CarritoItemDTO toItemDTOEnriquecido(CarritoItem item, ProductoDTO producto) {
         CarritoItemDTO dto = new CarritoItemDTO();
-        dto.setId(item.getId());
-        dto.setProductoId(item.getProductoId());
-        dto.setCantidad(item.getCantidad());
+        dto.setId(item.getId()); // FIX: getId() de CarritoItem
+        dto.setProductoId(item.getProductoId()); // FIX: getProductoId() de CarritoItem
+        dto.setCantidad(item.getCantidad()); // FIX: getCantidad() de CarritoItem
         
         // Datos del producto (obtenidos del MS-Inventario)
         dto.setNombre(producto.getNombre());
@@ -76,12 +76,12 @@ public class CarritoMapper {
         dto.setImagen(producto.getImagen());
         
         // Precio: usar el congelado o el actual
-        Double precio = item.getPrecioAlAgregar() != null 
-            ? item.getPrecioAlAgregar() 
-            : (producto.getPrecioOferta() != null ? producto.getPrecioOferta() : producto.getPrecio());
+        Double precio = item.getPrecioAlAgregar() != null // FIX: getPrecioAlAgregar()
+             ? item.getPrecioAlAgregar() // FIX: getPrecioAlAgregar()
+             : (producto.getPrecioOferta() != null ? producto.getPrecioOferta() : producto.getPrecio());
         
-        dto.setPrecio(precio);
-        dto.setSubtotal(precio * item.getCantidad());
+        dto.setPrecio(precio); // FIX: setPrecio()
+        dto.setSubtotal(precio * item.getCantidad()); // FIX: getCantidad()
         
         return dto;
     }

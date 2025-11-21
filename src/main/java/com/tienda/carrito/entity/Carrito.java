@@ -55,10 +55,9 @@ public class Carrito {
     
     public Integer contarTotalItems() {
         return items.stream()
-            .mapToInt(CarritoItem::getCantidad)
+            .mapToInt(item -> item.getCantidad()) 
             .sum();
     }
-    
     public void agregarItem(CarritoItem item) {
         items.add(item);
         item.setCarrito(this);

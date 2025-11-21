@@ -1,13 +1,12 @@
 package com.tienda.carrito.dto;
 
-import jakarta.validation.constraints.*;
 import lombok.Data;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Min;
 
 @Data
 public class ActualizarCantidadRequest {
-    
     @NotNull(message = "La cantidad es obligatoria")
-    @Min(value = 1, message = "La cantidad mínima es 1")
-    @Max(value = 99, message = "La cantidad máxima es 99")
-    private Integer cantidad;
+    @Min(value = 0, message = "La cantidad debe ser 0 o mayor")
+    private Integer cantidad; 
 }

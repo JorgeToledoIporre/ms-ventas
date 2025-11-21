@@ -42,18 +42,20 @@ public class ProductoClient {
         try {
             ProductoDTO producto = obtenerProducto(productoId);
             
-            // Asumiendo que ProductoDTO tiene inventarioId
-            if (producto.getInventarioId() == null) {
-                return false;
+            // Si el producto no existe o no tiene inventarioId, fallamos.
+            if (producto == null || producto.getInventarioId() == null) {
+                return false; 
             }
             
             // Llama al endpoint de inventario
-            String url = inventarioUrl + "/v1/inventario/" + producto.getInventarioId();
+            String url = inventarioUrl + "/v1/inventario/" + producto.getInventarioId(); 
+            
             InventarioDTO inventario = restTemplate.getForObject(url, InventarioDTO.class);
             
-            return inventario != null && inventario.getStock() >= cantidadSolicitada;
+            return inventario != null && inventario.getStock() >= cantidadSolicitada; 
         } catch (Exception e) {
-            return false; // Si falla, asumimos que no hay stock
+            // Si la conexión falla, asumimos que no hay stock
+            return false; 
         }
     }
 }
