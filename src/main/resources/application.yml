@@ -1,0 +1,29 @@
+server:
+  port: 8081  
+
+spring:
+  application:
+    name: microservicio-ventas
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/${DB_NAME:ventasdb}?allowPublicKeyRetrieval=true&useSSL=false
+    username: ${DB_USER:root}  
+    password: ${DB_PASSWORD:}  
+
+  jpa:
+    hibernate:
+      ddl-auto: update # Crea/actualiza las tablas automáticamente
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+microservicio:
+  inventario:
+    url: ${URI_INVENTARIO:http://localhost:8081}
+
+security: 
+  jwt:
+    secret: EstaEsUnaClaveSuperSecretaYLoSuficientementeLargaParaQueSpringNoSeQueje2025
+    expiration: 3600000

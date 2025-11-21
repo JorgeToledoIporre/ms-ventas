@@ -13,6 +13,8 @@ public interface CarritoRepository extends JpaRepository<Carrito, Long> {
     
     Optional<Carrito> findByUsuarioIdAndActivoTrue(Long usuarioId);
     
+    Optional<Carrito> findByUsuarioId(Long usuarioId);
+    
     List<Carrito> findByActivoTrueAndFechaActualizacionBefore(LocalDateTime fecha);
     
     boolean existsByUsuarioIdAndActivoTrue(Long usuarioId);

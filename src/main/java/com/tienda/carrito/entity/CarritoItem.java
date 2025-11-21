@@ -20,24 +20,16 @@ public class CarritoItem {
     @JoinColumn(name = "carrito_id", nullable = false)
     private Carrito carrito;
     
+
     @Column(nullable = false)
     private Long productoId;
     
-    @Column(nullable = false, length = 200)
-    private String nombre;
-    
-    @Column(length = 500)
-    private String descripcion;
-    
-    @Column(nullable = false)
-    private Double precio;
-    
-    private String imagen;
-    
     @Column(nullable = false)
     private Integer cantidad;
+
+    private Double precioAlAgregar;
     
     public Double calcularSubtotal() {
-        return precio * cantidad;
+        return precioAlAgregar != null ? precioAlAgregar * cantidad : 0.0;
     }
 }

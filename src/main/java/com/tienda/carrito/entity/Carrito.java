@@ -46,10 +46,10 @@ public class Carrito {
         fechaActualizacion = LocalDateTime.now();
     }
     
-    // Métodos de negocio
+    // --- MÉTODOS DE NEGOCIO ---
     public Double calcularSubtotal() {
         return items.stream()
-            .mapToDouble(item -> item.getPrecio() * item.getCantidad())
+            .mapToDouble(item -> (item.getPrecioAlAgregar() != null ? item.getPrecioAlAgregar() : 0.0) * item.getCantidad())
             .sum();
     }
     
